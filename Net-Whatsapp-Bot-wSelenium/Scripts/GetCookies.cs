@@ -10,9 +10,9 @@ using OpenQA.Selenium.Support;
 
 namespace Net_Whatsapp_Bot_wSelenium
 {
-    class GetCookies : IScript
+    class GetCookies
     {
-        DriverFactory driverFactory = new DriverFactory();
+        /*DriverFactory driverFactory = new DriverFactory();
         IWebDriver driver; //= driverFactory.createWebDriver();
         public IReadOnlyCollection<Cookie> Run()
         {
@@ -33,7 +33,7 @@ namespace Net_Whatsapp_Bot_wSelenium
         private void sleep(int ms)
         {
             System.Threading.Thread.Sleep(ms);
-        }
+        }*/
 
 
     }

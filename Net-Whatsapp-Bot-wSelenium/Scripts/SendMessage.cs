@@ -12,40 +12,51 @@ using OpenQA.Selenium.Support;
 
 namespace Net_Whatsapp_Bot_wSelenium
 {
-    class SendMessage:IScript
+    class SendMessage
     {
+        private string messageTo;
+        private string message;
+        private string photoPath;
+        
+
+        
 
         DriverFactory driverFactory = new DriverFactory();
         IWebDriver driver; //= driverFactory.createWebDriver();
-       
+
+        public string MessageTo { get => messageTo; set => messageTo = value; }
+        public string Message { get => message; set => message = value; }
+        public string PhotoPath { get => photoPath; set => photoPath = value; }
+
         public void Run()
-        {
-            //GetCookies getcookies = new GetCookies();
-            //IReadOnlyCollection<Cookie> allCookies = getcookies.Run();
+        {        
             driver = driverFactory.createWebDriver();
-            //for(int i = 0; i < allCookies.Count; i++)
-            //{
-            //    driver.Manage().Cookies.AddCookie(allCookies.ElementAt(i));
-            //}
+            
             
             Sidebar sidebar = new Sidebar(driver);
 
             driver.Navigate().GoToUrl("https://web.whatsapp.com");
+            Console.WriteLine("You need to login to your whatsapp acc.");
+            Console.WriteLine("Open your whatsapp app at your phone and scan the QR code.");
+            Console.WriteLine("If you already logged in, you don't need to scan QR");
             sleep(15000);
 
             sidebar.clickNewChat();
+            sleep(5000);
+            sidebar.selectPerson(MessageTo);
             sleep(15000);
-            sidebar.selectPerson("Caner Abi Travian");
-            sleep(15000);
-            //sidebar.selectPerson("ARŞİV");
-            //sleep(5000);
-            //Footer footer = new Footer(driver);
-            //footer.sendMessageToSelectedPerson("Merhaba Whatsapp");
-            //sleep(5000);
-            //Main main = new Main();
-            //main.sendImage(driver, "C:\\kilicim.png");
-            //sleep(10000);
+            
+            Footer footer = new Footer(driver);
+            footer.sendMessageToSelectedPerson("Merhaba Whatsapp");
+            sleep(5000);
+            if(photoPath != null)
+            {
+                Main main = new Main();
+                main.sendImage(driver, "C:\\kilicim.png");
+            }
+            sleep(5000);
             driver.Quit();
+
 
 
             
