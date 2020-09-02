@@ -41,13 +41,13 @@ namespace Net_Whatsapp_Bot_wSelenium
             Console.WriteLine("If you already logged in, you don't need to scan QR");
             sleep(15000);
 
-            sidebar.clickNewChat();
-            sleep(5000);
+            //sidebar.clickNewChat();
+            //sleep(5000);
             sidebar.selectPerson(MessageTo);
             sleep(15000);
             
             Footer footer = new Footer(driver);
-            footer.sendMessageToSelectedPerson("Merhaba Whatsapp");
+            footer.sendMessageToSelectedPerson(Message);
             sleep(5000);
             if(photoPath != null)
             {
